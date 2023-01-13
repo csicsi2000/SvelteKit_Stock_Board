@@ -13,7 +13,7 @@
 
 </script>
 
-<div class="p-5 bg-dark bg-gradient">
+<div class="p-5 table-responsive container">
 	<table class="table table-dark table-striped table-hover">
 		<thead>
 			<tr>
