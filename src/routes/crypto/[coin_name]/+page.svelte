@@ -26,5 +26,5 @@
 	<h1 class="text-center">{data.name}</h1>
 	<label for="time_line" class="form-label">{dates[start_time]}</label>
 	<input type="range" class="form-range" min="0" max={prices.length-2} id="time_line" bind:value={start_time}/>
-	<HistoryChart labels={dates.slice(start_time)} dataset={prices.slice(start_time)} />
 </div>
+<HistoryChart labels={dates.slice(start_time)} dataset={prices.slice(start_time)} />

@@ -42,4 +42,4 @@
 
 </script>
 
-<canvas bind:this={lineChartElement} class="m-5" style="max-height: 500px;" />
+<canvas bind:this={lineChartElement} class="m-2" style="max-height: 500px;" />
