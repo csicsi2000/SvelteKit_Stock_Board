@@ -4,15 +4,14 @@
 	import { browser } from '$app/environment';
 
 	let lineChartElement: HTMLCanvasElement | undefined;
+	let chart: Chart;
 
     export let labels: string[] = [];
     export let dataset: number[] = [];
-
-    console.log(labels[0]);
-    console.log(dataset[0]);
+	
 	onMount(() => {
 		if (browser) {
-			var chart = new Chart(lineChartElement!!, {
+			chart = new Chart(lineChartElement!!, {
 				type: 'line',
 				data: {
 					labels: labels,
@@ -29,6 +28,18 @@
 			});
 		}
 	});
+
+	function UpdateChart(){
+		console.log("Length: " +  dataset.length)
+		if(dataset.length != 0){
+			chart.data.labels = labels;
+			chart.data.datasets[0].data = dataset;
+			chart.update();
+		}
+	}
+
+	$: dataset, console.log(dataset.length), UpdateChart();
+
 </script>
 
-<canvas bind:this={lineChartElement} class="m-5" />
+<canvas bind:this={lineChartElement} class="m-5" style="max-height: 500px;" />

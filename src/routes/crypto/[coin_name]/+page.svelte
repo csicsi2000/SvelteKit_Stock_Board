@@ -12,16 +12,19 @@
 	let dates: string[] = [];
 	let prices: number[] = [];
 
-	get_crypto_history(data.name, Interval.m30).then((res) => {
+	let start_time:number = 0;
+
+	get_crypto_history(data.name, Interval.d1).then((res) => {
 		history = res.data;
-		dates = history.map((x) => x.date.toString().split("T")[0]);
+		dates = history.map((x) => x.date.toString().split('T')[0]);
 		prices = history.map((x) => parseFloat(x.priceUsd));
 		console.log('updated');
-        console.log(prices);
 	});
 </script>
 
-<h1 class="text-center">{data.name}</h1>
-{#key dates}
-	<HistoryChart labels={dates} dataset={prices} />
-{/key}
+<div class="m-5">
+	<h1 class="text-center">{data.name}</h1>
+	<label for="time_line" class="form-label">{dates[start_time]}</label>
+	<input type="range" class="form-range" min="0" max={prices.length-2} id="time_line" bind:value={start_time}/>
+	<HistoryChart labels={dates.slice(start_time)} dataset={prices.slice(start_time)} />
+</div>
