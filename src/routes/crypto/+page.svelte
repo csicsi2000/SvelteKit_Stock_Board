@@ -6,38 +6,37 @@
 	const itemName = 'get_crypto_list';
 	let arrayOfCrypto: Coin[] = [];
 
-    get_crypto_list().then((res) => {
-      arrayOfCrypto = res.data;
-      //localStorage.setItem(itemName, JSON.stringify(res.data));
-    })
-
+	get_crypto_list().then((res) => {
+		arrayOfCrypto = res.data;
+		//localStorage.setItem(itemName, JSON.stringify(res.data));
+	});
 </script>
 
-<div class="p-5 table-responsive container">
-	<table class="table table-dark table-striped table-hover">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Name</th>
-				<th class="text-center" scope="col">Symbol</th>
-				<th class="text-center" scope="col">USD</th>
-				<th class="text-center" scope="col">Change in 24h</th>
-				<th class="text-center" scope="col">Website</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			{#each arrayOfCrypto as coin, i}
-			
+<div class="bg-dark bg-gradient">
+	<div class="p-5 table-responsive container">
+		<table class="table table-dark table-striped table-hover">
+			<thead>
 				<tr>
-					<th scope="row">{i}</th>
-					<td><a href="/crypto/{coin.id}">{coin.id}</a></td>
-					<td class="text-center">{coin.symbol}</td>
-					<td class="text-center">{Math.round(+coin.priceUsd * 100) / 100}</td>
-					<td class="text-center">{Math.round(+coin.changePercent24Hr * 100) / 100} %</td>
-					<td class="text-center"><a href="{coin.explorer}" class="badge">{coin.explorer}</a></td>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th class="text-center" scope="col">Symbol</th>
+					<th class="text-center" scope="col">USD</th>
+					<th class="text-center" scope="col">Change in 24h</th>
+					<th class="text-center" scope="col">Website</th>
 				</tr>
-			{/each}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{#each arrayOfCrypto as coin, i}
+					<tr>
+						<th scope="row">{i}</th>
+						<td><a href="/crypto/{coin.id}">{coin.id}</a></td>
+						<td class="text-center">{coin.symbol}</td>
+						<td class="text-center">{Math.round(+coin.priceUsd * 100) / 100}</td>
+						<td class="text-center">{Math.round(+coin.changePercent24Hr * 100) / 100} %</td>
+						<td class="text-center"><a href={coin.explorer} class="badge">{coin.explorer}</a></td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
 </div>

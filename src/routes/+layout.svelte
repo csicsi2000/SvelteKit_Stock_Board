@@ -3,7 +3,7 @@
 	import NavBar from '$lib/nav/NavBar.svelte';
 </script>
 
-<div class="layout bg-dark bg-gradient">
+<div class="layout">
 	<NavBar/>
 
 	<PageTransition>
